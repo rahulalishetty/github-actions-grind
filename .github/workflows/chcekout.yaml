@@ -9,10 +9,12 @@ jobs:
         run: ls -a
 
       - name: Checkout
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git init
           git config --global init.defaultBranch main
-          git remote add origin "https://github.com/${{secrets.GITHUB_TOKEN}}/$GITHUB_REPOSITORY.git"
+          git remote add origin "https://github.com/$TOKEN/$GITHUB_REPOSITORY.git"
           git fetch origin
           git checkout main
 
